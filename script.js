@@ -26,7 +26,7 @@ function factorielle(n) {
      }
      return res;
   };
-let lastbin = "";
+let lastbin = identity;
 let left = 0;
 let op = identity;
 let right = NaN;
@@ -166,19 +166,17 @@ selfbouton.forEach(x => x.addEventListener("click", () => {
 }))
 let binbouton = document.querySelectorAll(".bin");
 binbouton.forEach(x => x.addEventListener("click",() => {
-    if (number !== ""){
-        let ope = x.id;
-        if(op != identity){
-            if(ope !== op){
-                egal();
-            }
-            number = "";
-        }
-        else{
-            left = number;
-            clearScreen();
-        op = ope;}
+    let ope = x.id;
+    if(lastbin !== identity){
+        egal();
+        number = "";
     }
+    else{
+        left = number;
+        clearScreen();
+    }
+    op = ope;
+    lastbin = ope;
 })
 
 )
@@ -213,6 +211,7 @@ function egal(){
     }
     changenum(y);
     left = number;
+    lastbin = identity;
 }
 let equalbutton = document.querySelector("#egal");
 equalbutton.addEventListener("click", () => egal());
