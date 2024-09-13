@@ -50,7 +50,7 @@ function updatenum(str){
     }
 }
 function clear(){
-    number = "0";
+    number = "_";
     left = 0;
     op = identity;
     right = 0;
@@ -59,7 +59,7 @@ function clear(){
     number = "";
 }
 function clearScreen(){
-    number = "0";
+    number = "_";
     let head = document.querySelector(".header");
     head.textContent = number;
     number = "";
@@ -102,7 +102,7 @@ selfbouton.forEach(x => x.addEventListener("click", () => {
     let y = 0;
     switch(ope){
         case "carre":
-            y = actualNumber**2;
+            y = Math.pow(actualNumber,2);
             break;
         case "inverse":
             if(actualNumber === 0){
